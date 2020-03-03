@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|PT+Serif:400,400i,700,700i|Source+Code+Pro|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Data Viz Lab</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+    <!-- Intro con titolo e immagine. Inserire immagine in /media/ con il nome cover.png
+    Al posto dei segna posto aggiungere il vostro nome e matricola negli <span> -->
+      <div class="intro">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 text">
+              <h5 class="text-center">UNIMIB - 2017/2018</h5>
+              <h1 class="text-center">Efficacia delle strutture ospedaliere della regione Lombardia</h1>
+              <h4 class="text-center">Un progetto di 
+                <span class="name">ELIA BETTANI (776536)</span>, 
+                <span class="name">DALILA DE SIMONE (820496)</span> e
+                <span class="name">STEFANO ROLA (790383)</span>
+				 </h4>
+              </div>
+          </div>
+          </div>
+      </div>
+      <!-- Primo blocco di testo -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h5>INTRODUZIONE</h5>
+            <p>L’obiettivo principale di una struttura ospedaliera è fornire il servizio sanitario più qualitativo possibile agli utenti che vi si rivolgono. Ma come è possibile ottenere una valutazione affidabile e accurata del servizio offerto ai cittadini, qualora si intenda avere una visione globale sullo stato della sanità in Lombardia? Per ottenere una risposta soddisfacente è fondamentale tener conto di numerosi fattori che influiscono sulla qualità della prestazione sanitaria offerta.</p>
+            <p>Per questo motivo l’Organizzazione Mondiale della Sanità (OMS) ha suddiviso il concetto di qualità in quattro dimensioni ponendosi come obiettivo la soddisfazione delle esigenze dei cittadini utilizzando il minor numero di risorse possibile.</p>
+			<p>Due delle quattro dimensioni utilizzate per la valutazione della qualità del sistema sanitario sono:<br>
+			<b>efficacia:</b> valuta la capacità della struttura di realizzazione degli obiettivi e costituisce uno strumento di misurazione dell’outcome.<br> 
+			<b>efficienza:</b> valuta l’utilizzo e l’allocazione ottimale delle risorse nel raggiungimento degli obiettivi del programma; la capacità di un dato intervento di raggiungere l’obiettivo con il minimo costo temporale, finanziario ed umano.</p>
+			<p>La valutazione della qualità ospedaliera è un aspetto fondamentale all’interno di ogni sistema dunque, anche se in Italia questo concetto fu introdotto per la prima volta solo con il decreto legislativo 502 del 1992, che annunciava l’utilizzo di indicatori di valutazione dell’efficienza ospedaliera da parte del Ministero della Sanità.</p>
+			<p>Nell’ultimo decennio, l’impegno della regione Lombardia nel promuovere e garantire la qualità del proprio sistema sanitario è stato notevole.<br>
+			Per quanto concerne la valutazione degli ospedali lombardi, l’obiettivo di tale impegno è stato quello di creare un modello in grado di sintetizzare i diversi aspetti della qualità, ossia l’efficacia ex ante,l’efficacia ex post e l’efficienza.</p><p>Uno dei possibili modi in cui avviene l’incontro tra domanda di assistenza sanitaria e l’offerta di assistenza data dalla struttura è il ricovero ospedaliero.<br>
+			L’efficienza e l’appropriatezza dei servizi erogati sono l’oggetto di verifica dei dati contenuti nelle Schede di Dimissione Ospedaliere (SDO).
+			Le SDO permettono di recuperare in modo facile e veloce numerose informazioni riguardanti le patologie dei ricoverati nel presidio sanitario, ottimizzando i tempi e i costi.</p>
+			<p>L’analisi di efficacia ex post si basa sull’analisi multilevel delle Schede di Dimissione Ospedaliera (SDO) e considera 7 outcome: mortalità intra-ospedaliera, mortalità a 30 giorni dalla dimissione, dimissioni volontarie, trasferimenti tra strutture, ritorni in sala operatoria, ricoveri ripetuti per lo stesso MDC e mortalità totale. Per ogni struttura è possibile quindi definire sette indicatori, ottenendo così un’indicazione sull’efficacia di ogni ospedale relativa al risultato medio regionale. </p>
+			<p>I dati visualizzati provengono dall’integrazione di due dataset che raccolgono 418.635 osservazioni riferite alle SDO dal 2013 al 2016 di tutte le strutture ospedaliere presenti nella regione Lombardia. Gli indicatori più rilevanti per la nostra analisi sono <b>la media dei trasferimenti tra strutture, il numero di ricoveri, di ricoveri ripetuti e la diagnosi ACC.</b> Il fine è valutare attraverso lo studio di questi indicatori quali strutture sanitarie presentano situazioni di potenziale efficacia o inefficacia.</p><br>
+			<h5>DESCRIZIONE DEGLI INDICATORI</h5>
+			<p><ul>
+			<li><b>I trasferimenti tra strutture:</b> emergono quando per lo stesso soggetto si rileva una dimissione e un’ammissione nello stesso giorno, escludendo i casi in cui questo passaggio avvenga tra ospedali che appartengono alla stessa Azienda Ospedaliera o Ente Unico (per le strutture private). Allo stesso modo si escludono i casi in cui il trasferimento sia diretto verso un’unità operativa non presente nella struttura che trasferisce, e di seguito si esclude anche il ritorno di questo paziente dalla struttura che l’ha ricevuto a quella che l’ha trasferito. Nei casi rimanenti si attribuisce valore negativo al record che effettua la dimissione</li>
+			<li><b>i ricoveri ripetuti per la stessa MDC entro l'anno:</b> si individuano quando per lo stesso soggetto esistono ricoveri multipli che appartengono alla stessa classe MDC, indipendentemente dal fatto che il ricovero successivo al primo avvenga nel medesimo ospedale;</li>
+			<li><b>diagnosi ACC:</b> Aggregati Clinici di Codici, si tratta di un codice identificativo di diagnosi.</li>
+			</ul></p>
+			  <hr>
+			<p>La <b>prima visualizzazione</b> che riportiamo presenta la collocazione geografica delle strutture ospedaliere della regione Lombardia, fornendo di ognuna la divisione in percentuale dei ricoveri totali in base all’ACC. </p>
+            </div>
+            </div>
+            </div>
+
+      <!-- Prima Visualizzazione -->
+      <div class="container viz">
+      <div class="row">
+	<div class='tableauPlaceholder' id='viz1536742642847' style='position: relative'><noscript><a href='#'><img alt='Cartina DEF ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ca&#47;cartina_1&#47;CartinaDEF&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='cartina_1&#47;CartinaDEF' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ca&#47;cartina_1&#47;CartinaDEF&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1536742642847');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+	</div>
+	</div>
+	<br>
+	
+	
+      <!-- Secondo blocco di testo -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+		<h5>COME INTERPRETARE LA VISUALIZZAZIONE</h5><br>
+		<p>Sulla cartina le strutture ospedaliere sono localizzate attraverso dei pallini, la cui grandezza è direttamente proporzionale al numero medio di ricoveri registrati nell’arco di quattro anni (dal 2013 al 2016).</p><br>
+		<p>All’interno della data visualization è possibile filtrare i dati per struttura di ricovero oppure, cliccando sulla lente d’ingrandimento in alto a destra, è possibile cercare nell’apposita barra la struttura di interesse. Con un semplice passaggio del cursore sopra al pallino si ottiene il nome della struttura, il numero medio dei ricoveri avvenuti nel quadriennio considerato e un grafico a bolle raffigurante la percentuale di ricoveri per ogni codice ACC; al suo interno sono riportati esplicitamente i dettagli relativi alle classi di diagnosi più frequenti.</p>
+		<br>
+        <p>Nella <b>seconda visualizzazione</b> abbiamo rappresentato le distribuzioni, univariate e congiunte, di due dei principali indici di efficacia ospedaliera per ogni struttura: i ricoveri ripetuti e i trasferimenti fra strutture.</p>     
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Seconda Visualizzazione -->
+	<div class="container viz">
+      <div class="row">
+     <div class='tableauPlaceholder' id='viz1536742808175' style='position: relative'><noscript><a href='#'><img alt='Story Scatterplot ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BF&#47;BF3JHZ6QF&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;BF3JHZ6QF' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;BF&#47;BF3JHZ6QF&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1536742808175');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1709px';vizElement.style.height='931px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+		</div>
+		  </div>
+     	
+      <!-- Terzo blocco di testo -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h5>COME INTERPRETARE LA VISUALIZZAZIONE</h5>
+            <p>Sugli assi sono riportati i boxplot raffiguranti le distribuzioni univariate della media percentuale dei ricoveri ripetuti e la media percentuale dei trasferimenti tra strutture per ogni struttura ospedaliera. Lo scatterplot centrale rappresenta la distribuzione congiunta dei due indicatori: valori superiori al terzo quartile per almeno uno dei due indicano una possibile inefficienza della struttura (sezioni colorate in rosso), mentre valori inferiori al primo quartile per entrambi gli indicatori suggeriscono una situazione di efficienza (sezione colorata in verde). La dimensione dei punti nella visualizzazione indica il numero medio di ricoveri della struttura nei quattro anni. Tramite l’apposita barra di ricerca invece è possibile individuare la posizione di ogni struttura all’interno dell’infografica, permettendo dunque di valutare il corrispettivo grado di efficienza rispetto agli indicatori considerati. L’ultima scheda della story permette di filtrare la visualizzazione per codice di diagnosi ACC.</p>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="howTo">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+              
+              <!-- In questa parte descrivere il processo di raccolta, pulizia e visualizzazione dei dati. Che tipo di dati avevo? Che tipo di operazioni sono state effettuate per poter visualizzare i dati. Come si leggono le visualizzazioni?-->
+              <h6>Note Metodologiche</h6>
+				<p>I dati considerati provengono dall’integrazione di due dataset: il primo contiene oltre 400 mila rilevazioni provenienti da Schede di Dimissione Ospedaliera tra il 2013 e il 2016, mentre il secondo 966 osservazioni relative a ogni singola struttura di ricovero della regione Lombardia.</p>
+				<p>Per la realizzazione della <b>prima visualizzazione</b> abbiamo dovuto innanzitutto codificare adeguatamente le variabili di latitudine e longitudine delle strutture, perché queste fossero localizzate correttamente sulla cartina. In seguito, è stata inserita la possibilità per l’utente di filtrare in base alla denominazione della struttura, insieme alla legenda che indica la relazione tra grandezza dei pallini e numero medio di ricoveri.<br>
+				Infine, ad ogni struttura è stato associato un bubble chart raffigurante la divisione dei ricoveri in classi di diagnosi, tramite il codice ACC: esso riporta infatti una dimensione delle bolle direttamente proporzionale alla percentuale rappresentata, e un colore diverso per ogni codice ACC. I dettagli relativi alla descrizione del codice ACC e alla percentuale da esso ricoperta sono esplicitati solo per le classi a frequenza maggiore.</p> 
+				<p>Per la realizzazione della <b>seconda visualizzazione</b> è stato innanzitutto necessario creare le variabili da rappresentare, tramite l’utilizzo del software Tableau. Abbiamo calcolato la percentuale dei ricoveri ripetuti rispetto al totale dei ricoveri effettuati ogni anno in ogni struttura; ottenuti tali valori, ne abbiamo poi calcolato la media aritmetica sui quattro anni oggetto di analisi (2013,2014,2015,2016); abbiamo così ottenuto la <i>media percentuale dei ricoveri ripetuti</i>. Lo stesso procedimento è stato seguito per creare la variabile <i>media percentuale di trasferimenti fra strutture</i>. Le distribuzioni delle due variabili sono state visualizzate singolarmente tramite l’utilizzo di due boxplot, mentre per valutare la distribuzione congiunta dei due indicatori è stato creato un diagramma a dispersione raffigurante anche la mediana di ogni variabile con il relativo range interquartile. Al passaggio del cursore vengono visualizzati il nome della struttura ospedaliera selezionata, la percentuale media dei due indicatori in analisi e il numero medio di ricoveri sui quattro anni (in funzione del quale è stata impostata la grandezza dei punti). È stata poi fornita all’utente la possibilità di cercare una struttura specifica all’interno del grafico con un highlighter, e seguire delle semplici istruzioni per facilitare la navigazione. Le diverse schede poste sopra all’infografica permettono di investigare questa in maniera intuitiva, concentrandosi facilmente su ogni suo aspetto, univariato e bivariato.<br>
+				L’ultima scheda della story permette infine l’applicazione di un filtro per ogni codice di diagnosi ACC: è possibile quindi visualizzare per un dato codice ACC quali risultano essere le strutture più o meno efficaci e, viceversa, quali sono le classi di diagnosi con performance migliori all’interno della stessa struttura.
+</p>
+              
+             <h6>Euristiche considerate</h6>
+              <p>La principale euristica che abbiamo utilizzato per la creazione delle visualizzazioni è il “visual information-seeking mantra” [Shneiderman, 1996]: <i>“Overview first, zoom and filter, then details-on-demand.”</i></p>
+				<ul><li><b>Overview:</b>visualizzazione complessiva del dataset.</li>
+				<li><b>Zoom and Filter:</b> possibilità di zoomare la mappa e di filtrare per struttura di ricovero.</li>
+				<li><b>Details on demand:</b> possibilità di evidenziare una struttura di ricovero e ottenere informazioni specifiche passandoci sopra col cursore.</li></ul>
+
+              <hr>
+
+             <h6>Test Utente</h6>
+             <p><b>Obiettivo principale:</b> Utilizzare i filtri per trovare le singole strutture ospedaliere ed ottenere una valutazione degli indicatori di efficacia</p> 
+			<p><b>Attore:</b> Utente</p>    
+			<p><b>Scenario ottimale:</b>L’utente si serve in primo luogo delle captions poste sopra l’infografica per identificare le distribuzioni univariate, i quartili e le osservazioni anomale per ciascuno degli indicatori visualizzati.<br><br>
+			Successivamente scorrendo col cursore sopra i punti che costituiscono lo scatter plot, visualizza tramite il tooltip a che livello si collocano le strutture sanitarie lombarde nell’analisi riguardo alla loro efficacia.<br>				
+			Per una navigazione più rapida all’interno dell’infografica infine, viene fornita una barra di ricerca in cui digitare il presidio ospedaliero di interesse in modo da individuarlo in maniera agevole." 
+			<br> 
+		
+ </p>
+				
+			<h6>CONFRONTO TEMPI DI ESECUZIONE</h6>
+			<img src="media/Violin 2.png">
+			 <img src="media/Violin Stat.PNG"><br><br>
+				
+			<p>Dai violin plot affiancati non sembra emergere una differenza significativa tra i tempi di esecuzione dei 12 utenti, divisi in due gruppi di pari numerosità in base alla presenza o meno di conoscenze pregresse in ambito statistico.<br>Un t-test per campioni a due code è stato eseguito per avere una conferma analitica di quanto anticipato dal grafico.<br>In base a tale test non si è trovata una differenza significativa nei tempi di esecuzione tra i due gruppi, che risultano impiegare rispettivamente in media 4’ 24’’ (chi ha conoscenze di statistica pregresse) e 5’ 55’’ (chi non ha conoscenze pregresse in ambito statistico). Il valore assunto dalla statistica test T di Student risulta infatti pari a 1.071, con un p-value associato di 0.309.</p><br>
+			
+             
+			<hr>
+			<p>La stessa visualizzazione è stata sottoposta in un secondo momento ad un campione di trentadue persone. L’obiettivo era confrontare le risposte di sedici soggetti che hanno background statistico con le risposte di altre sedici persone che invece non hanno conoscenze statistiche pregresse. <br>
+			Agli intervistati è stato chiesto di completare tre task in forma anonima per chiarire in che misura l’infografica risultasse efficace e comprensibile, e verificare se risultasse accessibile a tutti o se la forma scelta per rappresentare i dati potesse essere un ostacolo, soprattutto per chi non dispone di strumenti necessari a comprenderne le informazioni contenute.</p><br><br>
+				
+			<img src="media/Tassi di errore.PNG">
+			<br><br>
+		
+			<p>Dalla visualizzazione di cui sopra si possono estrarre le proporzioni di risposte corrette registrate nei due gruppi di confronto nei diversi task con i relativi intervalli di confidenza sulla proporzione. Per ciascuno dei tre task dunque si ha la proporzione di risposte corrette calcolate sui sedici individui che compongono il campione ed i relativi intervalli di confidenza: è interessante notare come il limite inferiore di questi intervalli di confidenza è inferiore al valore di 0,5 (vale a dire la metà esatta di risposte corrette) nei gruppi di non statistica nello svolgimento dei task 2 e 3, ma non nel task 1 dove anzi il gruppo di individui senza conoscenze statistiche riesce a fare leggermente meglio del gruppo di chi invece ne possiede. In ogni caso, a prima vista le differenze tra i due gruppi non risultano significative.<br>
+			Una volta ottenute le proporzioni di risposte corrette nei gruppi e nei task è possibile aggregare i dati dei gruppi in analisi; ciò vuol dire ottenere due gruppi di confronto tra chi ha background statistico e chi non ne ha, unendo le risposte registrate nei tre task effettuati. A questo punto si può impostare un test chi-quadro per valutare se la differenza tra la proporzione di risposte corrette all’interno dei due gruppi sia statisticamente significativa, oppure se non si possa escludere il caso come spiegazione della differenza nelle risposte.<br>Si costruisce quindi una tabella di contingenza composta di due righe e di due colonne, che racchiude al suo interno le informazioni riguardanti la proporzione di risposte corrette nei due gruppi aggregati a livello dei tre task.<br>
+			A partire da questa tabella di contingenza viene poi impostato il test chi-quadro a due code (senza correzione di Yates): il valore assunto dalla statistica test nel nostro caso risulta pari a 1.787, valore che in una distribuzione chi-quadro presenta una probabilità associata di 0.181.<br>Si conclude perciò, come già intuibile dalla sola osservazione del grafico a barre, che non si può escludere il caso come causa delle differenze individuate all’interno dei due gruppi a confronto.<br>In modo analogo possono essere costruite tre tabelle di contingenza, una per ciascun task. Per ogni tabella si può impostare un test chi-quadro come sopra, vale a dire a due code e senza correzione di Yates. Questo permette di valutare la significatività della divisione in due gruppi nell’ottenere risposte corrette anche all’interno del singolo task. <br>I tre test effettuati riportano per ogni task rispettivamente dei p-value pari a: 0,554 per il primo task, 0,414 per il secondo e 0,070 per il terzo. Concludiamo perciò che non c’è evidenza per cui la differenza nei due gruppi non possa essere imputabile al caso, sebbene nel terzo task il p-value ottenuto sia molto vicino alla soglia di rifiuto dell’ipotesi nulla fissata tradizionalmente a 0,050.
+</p>
+
+              <h6>Questionari psicometrici</h6>
+              <p>Il questionario psico - sociometrico usato è quello redatto da Cabitza - Locoro (Locoro et al 2017, Computers in Human Behavior). Il questionario proposto agli utenti ha lo scopo di ottenere una valutazione dell’infografica dando un’opinione riguardo ai seguenti parametri: utility, intuitivity, clarity, informativeness e beauty e ottenere anche una valutazione della qualità complessiva dell’infografica sempre utilizzando una scala di valutazione tarata su un punteggio da 1 a 6, in modo da non avere una distorsione dovuta ai valori intermedi.</p><br>
+				<div class='tableauPlaceholder' id='viz1527856141002' style='position: relative'><noscript><a href='#'><img src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;datavizrisutati_0&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='datavizrisutati_0&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;da&#47;datavizrisutati_0&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1527856141002');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='700px';vizElement.style.height='827px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+			  <br>
+				<p>A partire dalla valutazione di questi item con un punteggio da 1 a 6, si aggregano i risultati delle valutazioni più basse e di quelle più alte, ottenendo così una variabile conteggio dicotomica, che divide quindi giudizi positivi e giudizi negativi.
+				E’ stato quindi calcolato per ciascuno degli item appena citati il conteggio delle valutazioni positive ottenute sul totale delle trentadue persone a cui è stato somministrato il questionario. Si è poi derivata la proporzione delle valutazioni positive sul totale corrispondente, e calcolato un intervallo di confidenza ragionevole (con un alfa pari a 0.05) per la proporzione stessa.<br><br>
+				Se ci si concentra sui risultati della valutazione distinguendo tra i due gruppi a confronto si nota come per tutti gli indicatori i risultati presentano una situazione variegata, in cui in generale gli estremi inferiori degli intervalli di confidenza per ogni item sono inferiori al valore mediano di 0,5 mentre la situazione è ribaltata per quanto riguarda gli estremi superiori. Infatti le differenze tra i due gruppi sembrerebbero riconducibili al caso. Di conseguenza si nota come non ci siano trend particolari nei punteggi degli item, o almeno non a livello dei due gruppi considerati. Al contrario i risultati mostrano valutazioni altamente variabili anche all’interno degli stessi item e talvolta sorprendenti; se si considerano i risultati in riferimento all’ intuitività per esempio, si riscontrano valori paradossalmente più elevati (seppur non significativamente) nel gruppo di chi non ha conoscenze statistiche pregresse. 
+				L’item che fa eccezione per queste valutazioni e che fornisce indicazioni più interessanti però è quello collegato all’utilità: infatti entrambi gli estremi dell’intervallo di confidenza sono superiori al valore soglia di 0,5. In questo senso quindi si può dedurre come, nonostante le valutazioni riferite agli altri item non forniscano evidenze particolari, sia altresì vero che i giudizi riguardanti l’utilità della visualizzazione sono concordi e favorevoli.
+
+
+</p>
+
+				
+              </div>
+
+
+
+
+
+
+            <!-- Inserire i link di google spreadsheet/drive o i link ai file dentro la cartella data (ridotti possibilmente - max 5mb) al posto di # e dare un nome ai dataset.-->
+            <div class="col-md-3 col-md-offset-1 howToSide">
+            <h6>Dati utilizzati</h6>
+            <p><a href="https://www.dati.lombardia.it/Sanit-/Performance-degli-Ospedali/cr6e-iitb/data">Performance degli Ospedali della Regione Lombardia </a></p>
+            <p><a href="https://www.dati.lombardia.it/Sanit-/Dataset-SDO-Regione-Lombardia/jv9t-c6q6/data">SDO Regione Lombardia</a></p>
+
+            <!-- Inserire i link agli strumenti utilizzati per la gestione dei dati e per la visualizzazione-->
+            <h6 id="tools">Strumenti utilizzati</h6>
+            <p><a href="https://www.tableau.com/">Tableau</a></p>
+            <p><a href="https://www.python.org/">Python</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <!-- /#page-content-wrapper -->
+
+
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="js/ie10-viewport-bug-workaround.js"></script>
+  <script>$(document).ready(function () {
+    var trigger = $('.hamburger'),
+    overlay = $('.overlay'),
+    isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+    }
+
+    $('[data-toggle="offcanvas"]').click(function () {
+      $('#wrapper').toggleClass('toggled');
+    });
+  });
+  </script>
+
+</body>
+</html>

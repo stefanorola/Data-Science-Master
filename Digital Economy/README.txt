@@ -1,0 +1,1 @@
+The aim of the project was to create a Business Model for an innovative idea.
